@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YIGH — Africa Youth in Green Hydrogen | Green · Blue · Emerald Fusion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: #0a1f1a; }
+
+    /* ============ SPECTACULAR GREEN-BLUE-EMERALD GRADIENT BACKGROUND ============ */
+    .hero-gradient {
+      background: radial-gradient(ellipse at 30% 40%, 
+        #052e1f 0%, 
+        #064e3b 25%, 
+        #0c4a6e 50%, 
+        #0891b2 75%, 
+        #031e1a 100%);
+      background-size: 300% 300%;
+      animation: hydrogenFlow 20s ease infinite;
+      position: relative;
+    }
+    
+    @keyframes hydrogenFlow {
+      0% { background-position: 0% 30%; }
+      25% { background-position: 50% 70%; }
+      50% { background-position: 100% 50%; }
+      75% { background-position: 50% 30%; }
+      100% { background-position: 0% 30%; }
+    }
+
+    /* Alternative gradient for other sections */
+    .gradient-green-blue {
+      background: linear-gradient(135deg, #031e1a 0%, #064e3b 30%, #0c4a6e 70%, #0891b2 100%);
+    }
+    
+    .gradient-emerald-teal {
+      background: linear-gradient(120deg, #022c1a, #064e3b, #0f766e, #0e7490);
+    }
+
+    /* Particle canvas */
+    #particles-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ============ REVEAL ANIMATIONS ============ */
+    .reveal-up, .reveal-left, .reveal-right, .reveal-scale {
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-up { transform: translateY(40px); }
+    .reveal-left { transform: translateX(-40px); }
+    .reveal-right { transform: translateX(40px); }
+    .reveal-scale { transform: scale(0.85); }
+    .reveal-up.visible, .reveal-left.visible, .reveal-right.visible, .reveal-scale.visible {
+      opacity: 1;
+      transform: translateY(0) translateX(0) scale(1);
+    }
+
+    /* Stagger delays */
+    .delay-1 { transition-delay: 0.1s !important; }
+    .delay-2 { transition-delay: 0.2s !important; }
+    .delay-3 { transition-delay: 0.3s !important; }
+    .delay-4 { transition-delay: 0.4s !important; }
+    .delay-5 { transition-delay: 0.5s !important; }
+    .delay-6 { transition-delay: 0.6s !important; }
+
+    /* ============ KEYWORD HIGHLIGHT ============ */
+    .keyword {
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(135deg, #6ee7b7, #2dd4bf, #38bdf8);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: 800;
+    }
+    .keyword::after {
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      left: -6px;
+      right: -6px;
+      height: 40%;
+      background: linear-gradient(90deg, rgba(110, 231, 183, 0.2), rgba(45, 212, 191, 0.3), rgba(56, 189, 248, 0.2));
+      border-radius: 8px;
+      z-index: -1;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .keyword.visible::after { transform: scaleX(1); }
+
+    /* ============ FLOATING ANIMATIONS ============ */
+    .float { animation: floating 6s ease-in-out infinite; }
+    .float-delayed { animation: floating 6s ease-in-out 2s infinite; }
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+
+    /* ============ GLOW PULSE ============ */
+    .glow-pulse {
+      animation: hydrogenGlow 3.5s ease-in-out infinite;
+    }
+    @keyframes hydrogenGlow {
+      0%, 100% { 
+        box-shadow: 0 0 20px rgba(45, 212, 191, 0.3), 0 0 5px rgba(110, 231, 183, 0.2);
+        border-color: rgba(45, 212, 191, 0.4);
+      }
+      50% { 
+        box-shadow: 0 0 50px rgba(45, 212, 191, 0.5), 0 0 20px rgba(56, 189, 248, 0.3);
+        border-color: rgba(56, 189, 248, 0.6);
+      }
+    }
+
+    /* ============ NAVBAR GLASS ============ */
+    .nav-glass {
+      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(3, 30, 26, 0.75);
+      border-bottom: 1px solid rgba(45, 212, 191, 0.2);
+      transition: all 0.3s ease;
+    }
+    .nav-glass.scrolled {
+      background: rgba(2, 20, 18, 0.92);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ============ CARD HOVER ============ */
+    .focus-card {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      background: linear-gradient(135deg, rgba(5, 46, 40, 0.7), rgba(3, 30, 26, 0.8));
+    }
+    .focus-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 40px -12px rgba(45, 212, 191, 0.3);
+      border-color: #2dd4bf !important;
+    }
+
+    /* ============ TIMELINE ============ */
+    .timeline-line {
+      background: linear-gradient(180deg, #2dd4bf 0%, #0ea5e9 30%, #14b8a6 70%, #2dd4bf 100%);
+      box-shadow: 0 0 8px rgba(45, 212, 191, 0.4);
+    }
+
+    /* ============ HERO TEXT ANIMATION ============ */
+    .hero-title span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(60px) rotateX(-15deg);
+      animation: heroReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes heroReveal {
+      to { opacity: 1; transform: translateY(0) rotateX(0deg); }
+    }
+
+    /* ============ SCROLL INDICATOR ============ */
+    .scroll-indicator {
+      animation: scrollBounce 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0) translateX(-50%); }
+      50% { transform: translateY(12px) translateX(-50%); }
+    }
+
+    /* ============ CUSTOM SCROLLBAR ============ */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #031e1a; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #2dd4bf, #0ea5e9); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: linear-gradient(135deg, #0ea5e9, #2dd4bf); }
+
+    /* ============ SELECTION COLOR ============ */
+    ::selection { background: rgba(45, 212, 191, 0.3); color: #fff; }
+  </style>
+</head>
+<body class="text-white">
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="nav-glass fixed top-0 w-full z-50 transition-all duration-300 py-4">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-400 to-emerald-500 flex items-center justify-center shadow-lg">
+          <i data-lucide="droplets" class="w-5 h-5 text-white"></i>
+        </div>
+        <span class="font-display font-bold text-xl tracking-tight bg-gradient-to-r from-cyan-300 via-emerald-400 to-teal-300 bg-clip-text text-transparent">YIGH</span>
+      </div>
+      <div class="hidden md:flex items-center space-x-7 text-sm font-medium">
+        <a href="#about" class="text-gray-200 hover:text-cyan-300 transition">About</a>
+        <a href="#vision" class="text-gray-200 hover:text-cyan-300 transition">Vision</a>
+        <a href="#focus" class="text-gray-200 hover:text-cyan-300 transition">Focus</a>
+        <a href="#events" class="text-gray-200 hover:text-cyan-300 transition">Events</a>
+        <a href="#team" class="text-gray-200 hover:text-cyan-300 transition">Leadership</a>
+        <a href="#join" class="px-5 py-2 bg-gradient-to-r from-cyan-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 rounded-full text-white font-semibold transition shadow-md">Join Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION with RICH GRADIENT ========== -->
+  <section id="hero" class="hero-gradient relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <canvas id="particles-canvas"></canvas>
+    
+    <!-- Floating decorative elements -->
+    <div class="absolute top-20 left-10 w-72 h-72 rounded-full bg-cyan-500/10 blur-3xl float"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl float-delayed"></div>
+    <div class="absolute top-1/3 left-1/4 w-48 h-48 rounded-full bg-teal-400/5 blur-2xl float"></div>
+    
+    <div class="relative z-10 max-w-6xl mx-auto px-4 text-center py-28">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/40 bg-cyan-500/10 mb-6 reveal-up">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+        <span class="text-cyan-300 text-xs sm:text-sm font-medium">Youth-Led • Pan-African • Green Hydrogen Economy</span>
+      </div>
+      
+      <h1 class="hero-title font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight mb-6">
+        <span>Empowering</span>
+        <span class="bg-gradient-to-r from-cyan-300 to-emerald-400 bg-clip-text text-transparent">Africa's</span>
+        <span>Youth in</span><br />
+        <span class="bg-gradient-to-r from-emerald-300 via-teal-400 to-cyan-400 bg-clip-text text-transparent">Green Hydrogen</span>
+      </h1>
+      
+      <p class="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-10 reveal-up delay-3">
+        Building the next generation of leaders in <span class="keyword" data-reveal>clean energy</span>, <span class="keyword" data-reveal>climate innovation</span>, and <span class="keyword" data-reveal>sustainable development</span> across Africa.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-5 justify-center reveal-up delay-5">
+        <a href="#about" class="group px-8 py-4 bg-gradient-to-r from-cyan-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 text-white font-bold rounded-full transition-all shadow-xl flex items-center gap-2">
+          Discover YIGH <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-1 transition"></i>
+        </a>
+        <a href="#join" class="px-8 py-4 border border-cyan-400/60 hover:bg-cyan-500/10 text-cyan-200 font-semibold rounded-full transition">Get Involved</a>
+      </div>
+      
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
+        <i data-lucide="chevrons-down" class="w-6 h-6 text-cyan-300/70"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT SECTION with gradient background ========== -->
+  <section id="about" class="relative py-24 gradient-green-blue">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="reveal-left relative">
+        <div class="rounded-3xl overflow-hidden aspect-[4/3] glow-pulse border border-cyan-400/40 shadow-2xl">
+          <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop" alt="Green Hydrogen Africa" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute -bottom-5 -right-5 bg-[#031e1a]/90 backdrop-blur-lg border border-cyan-400/30 rounded-2xl p-4 float-delayed">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center">
+              <i data-lucide="wind" class="w-5 h-5 text-cyan-300"></i>
+            </div>
+            <div>
+              <p class="text-xs text-gray-300">Focus Frontier</p>
+              <p class="font-bold text-cyan-300">Green Hydrogen</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-cyan-500/10 border border-cyan-400/30 rounded-full mb-6">
+          <i data-lucide="info" class="w-3.5 h-3.5 text-cyan-300"></i>
+          <span class="text-cyan-300 text-xs font-semibold">About YIGH</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold mb-6">Youth In <span class="bg-gradient-to-r from-cyan-300 to-emerald-400 bg-clip-text text-transparent">Green Hydrogen</span></h2>
+        <p class="text-gray-200 text-lg mb-6">YIGH is a pan-African youth-led platform empowering young Africans to lead in <span class="keyword">green hydrogen</span>, clean energy, and climate innovation.</p>
+        <p class="text-gray-300 mb-8">We <strong class="text-cyan-300">educate, connect, inspire, and empower</strong> young people to actively shape the future clean molecule economy across the continent.</p>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="flex gap-2 bg-cyan-500/10 p-3 rounded-xl border border-cyan-400/20"><i data-lucide="book-open" class="w-5 h-5 text-cyan-300"></i><span>Educate</span></div>
+          <div class="flex gap-2 bg-emerald-500/10 p-3 rounded-xl border border-emerald-400/20"><i data-lucide="link" class="w-5 h-5 text-emerald-300"></i><span>Connect</span></div>
+          <div class="flex gap-2 bg-teal-500/10 p-3 rounded-xl"><i data-lucide="sparkles" class="w-5 h-5 text-teal-300"></i><span>Inspire</span></div>
+          <div class="flex gap-2 bg-blue-500/10 p-3 rounded-xl"><i data-lucide="shield" class="w-5 h-5 text-blue-300"></i><span>Empower</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VISION SECTION ========== -->
+  <section id="vision" class="relative py-24 bg-[#031e1a]">
+    <div class="max-w-5xl mx-auto px-6 text-center mb-16">
+      <div class="inline-flex gap-2 bg-cyan-500/10 px-3 py-1 rounded-full">
+        <i data-lucide="eye" class="w-4 h-4 text-cyan-300"></i>
+        <span class="text-cyan-300 text-xs uppercase font-bold">Our Vision</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mt-4">Bridging the <span class="text-cyan-300">Gap</span> to Clean Hydrogen</h2>
+      <p class="text-gray-300 mt-4 max-w-2xl mx-auto">Connecting African youth to the global hydrogen revolution — from Kenya to the continent.</p>
+    </div>
+    
+    <div class="max-w-5xl mx-auto px-6 relative">
+      <div class="absolute left-6 sm:left-1/2 top-0 bottom-0 w-0.5 timeline-line sm:-translate-x-1/2"></div>
+      
+      <div class="relative flex items-start mb-16 reveal-left">
+        <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-cyan-500 border-4 border-[#031e1a]"></div>
+        <div class="sm:w-1/2 sm:pr-12 sm:text-right ml-14">
+          <div class="p-6 rounded-2xl bg-[#052e28]/80 border border-cyan-500/30">
+            <span class="text-cyan-300 text-xs font-bold">Chapter 01</span>
+            <h3 class="text-2xl font-bold">Kenya 🇰🇪</h3>
+            <p class="text-gray-300">First seed of green hydrogen youth leadership planted.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="relative flex items-start mb-16 reveal-right">
+        <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-emerald-500 border-4 border-[#031e1a]"></div>
+        <div class="sm:w-1/2 sm:ml-auto sm:pl-12 ml-14">
+          <div class="p-6 rounded-2xl bg-[#052e28]/80 border border-emerald-500/30">
+            <span class="text-emerald-300 text-xs font-bold">Expanding</span>
+            <h3 class="text-2xl font-bold">East Africa 🌍</h3>
+            <p class="text-gray-300">Uganda, Tanzania, Rwanda — cross-border collaboration.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="relative flex items-start mb-16 reveal-left">
+        <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-teal-400 border-4 border-[#031e1a]"></div>
+        <div class="sm:w-1/2 sm:pr-12 sm:text-right ml-14">
+          <div class="p-6 rounded-2xl bg-[#052e28]/80 border border-teal-400/30">
+            <span class="text-teal-300 text-xs font-bold">Scaling</span>
+            <h3 class="text-2xl font-bold">Pan-African Network 🌐</h3>
+            <p class="text-gray-300">Building a united green force across the continent.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="relative flex items-start reveal-right">
+        <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 border-4 border-[#031e1a]"></div>
+        <div class="sm:w-1/2 sm:ml-auto sm:pl-12 ml-14">
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-cyan-800/40 to-emerald-900/30 border border-cyan-400/50 glow-pulse">
+            <span class="text-cyan-200 text-xs font-bold">Vision 2030</span>
+            <h3 class="text-2xl font-bold">Global Recognition 🚀</h3>
+            <p class="text-gray-200">Leading African youth voice on the global hydrogen stage.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOCUS AREAS ========== -->
+  <section id="focus" class="py-24 gradient-emerald-teal">
+    <div class="max-w-7xl mx-auto px-6 text-center mb-16">
+      <div class="inline-flex gap-2 bg-cyan-500/10 px-3 py-1 rounded-full">
+        <i data-lucide="target" class="w-4 h-4 text-cyan-300"></i>
+        <span class="text-cyan-300 text-xs uppercase">Focus Areas</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mt-4">What Drives <span class="text-cyan-300">Our Mission</span></h2>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+      <div class="focus-card p-5 rounded-2xl border border-cyan-500/20"><i data-lucide="flame" class="w-8 h-8 text-cyan-300 mb-3"></i><h3 class="font-bold text-lg">Green Hydrogen</h3><p class="text-gray-300 text-sm">Zero-carbon energy carrier.</p></div>
+      <div class="focus-card p-5 rounded-2xl border border-emerald-500/20"><i data-lucide="wind" class="w-8 h-8 text-emerald-300 mb-3"></i><h3 class="font-bold text-lg">Renewable Energy</h3><p class="text-gray-300 text-sm">Solar, wind, hydro synergy.</p></div>
+      <div class="focus-card p-5 rounded-2xl border border-teal-500/20"><i data-lucide="droplets" class="w-8 h-8 text-teal-300 mb-3"></i><h3 class="font-bold text-lg">Clean Molecules</h3><p class="text-gray-300 text-sm">Low-carbon energy solutions.</p></div>
+      <div class="focus-card p-5 rounded-2xl border border-cyan-500/20"><i data-lucide="lightbulb" class="w-8 h-8 text-amber-300 mb-3"></i><h3 class="font-bold text-lg">Climate Innovation</h3><p class="text-gray-300 text-sm">Creative climate solutions.</p></div>
+      <div class="focus-card p-5 rounded-2xl border border-emerald-500/20"><i data-lucide="sprout" class="w-8 h-8 text-emerald-300 mb-3"></i><h3 class="font-bold text-lg">Sustainability</h3><p class="text-gray-300 text-sm">Circular green economy.</p></div>
+      <div class="focus-card p-5 rounded-2xl border border-cyan-500/20"><i data-lucide="factory" class="w-8 h-8 text-cyan-300 mb-3"></i><h3 class="font-bold text-lg">Green Industrialization</h3><p class="text-gray-300 text-sm">Decarbonized industries.</p></div>
+      <div class="focus-card p-5 rounded-2xl border border-emerald-500/20"><i data-lucide="users" class="w-8 h-8 text-cyan-300 mb-3"></i><h3 class="font-bold text-lg">Youth Capacity</h3><p class="text-gray-300 text-sm">Skills & leadership.</p></div>
+      <div class="focus-card p-5 rounded-2xl border border-teal-500/20"><i data-lucide="microscope" class="w-8 h-8 text-teal-300 mb-3"></i><h3 class="font-bold text-lg">Research</h3><p class="text-gray-300 text-sm">Cutting-edge knowledge.</p></div>
+      <div class="focus-card p-5 rounded-2xl border border-cyan-500/20"><i data-lucide="scroll-text" class="w-8 h-8 text-indigo-300 mb-3"></i><h3 class="font-bold text-lg">Policy Awareness</h3><p class="text-gray-300 text-sm">Shaping energy governance.</p></div>
+      <div class="focus-card p-5 rounded-2xl border border-emerald-500/20"><i data-lucide="cpu" class="w-8 h-8 text-violet-300 mb-3"></i><h3 class="font-bold text-lg">Future Tech</h3><p class="text-gray-300 text-sm">AI, electrolyzers, storage.</p></div>
+    </div>
+  </section>
+
+  <!-- ========== JOIN CTA SECTION ========== -->
+  <section id="join" class="py-24 bg-[#031e1a]">
+    <div class="max-w-6xl mx-auto px-6 text-center mb-12">
+      <div class="inline-flex gap-2 bg-cyan-500/10 px-3 py-1 rounded-full">
+        <i data-lucide="heart" class="w-4 h-4 text-cyan-300"></i>
+        <span class="text-cyan-300 text-xs uppercase">Get Involved</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mt-4">Ready to Shape the <span class="text-cyan-300">Hydrogen Future</span>?</h2>
+      <p class="text-gray-300 mt-4">Join Africa's premier youth network driving green hydrogen leadership.</p>
+    </div>
+    
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="rounded-3xl overflow-hidden border border-cyan-400/40 bg-[#052e28]/80 backdrop-blur-sm shadow-2xl">
+        <div class="p-8 text-center">
+          <h3 class="text-2xl font-bold mb-4">Sign Up for Updates</h3>
+          <form id="joinForm" class="space-y-4 max-w-md mx-auto">
+            <input type="text" id="fullName" placeholder="Full Name" required class="w-full p-3 rounded-xl bg-white/10 border border-cyan-400/30 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400">
+            <input type="email" id="email" placeholder="Email Address" required class="w-full p-3 rounded-xl bg-white/10 border border-cyan-400/30 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400">
+            <select id="country" required class="w-full p-3 rounded-xl bg-white/10 border border-cyan-400/30 text-white">
+              <option value="" disabled selected class="text-gray-800">Select Country</option>
+              <option class="text-gray-800">Kenya</option><option class="text-gray-800">Nigeria</option><option class="text-gray-800">South Africa</option><option class="text-gray-800">Egypt</option><option class="text-gray-800">Other</option>
+            </select>
+            <button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 text-white font-bold rounded-xl transition shadow-lg">Join the Movement →</button>
+          </form>
+          <p class="text-gray-400 text-sm mt-6">Together, we're building Africa's clean energy future.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-8 text-center text-gray-400 border-t border-cyan-500/20 text-sm bg-[#031e1a]">
+    <p>© 2025 Youth In Green Hydrogen (YIGH) — Empowering Africa's green hydrogen revolution. #HydrogenLeaders</p>
+  </footer>
+
+  <script>
+    // Particles effect
+    const canvas = document.getElementById('particles-canvas');
+    if(canvas){
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      function resize(){ width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; }
+      resize(); window.addEventListener('resize', resize);
+      let particles = [];
+      for(let i=0;i<80;i++) particles.push({
+        x: Math.random() * width, y: Math.random() * height,
+        radius: Math.random() * 3 + 1, alpha: Math.random() * 0.5 + 0.2,
+        dx: (Math.random() - 0.5) * 0.25, dy: (Math.random() - 0.5) * 0.25
+      });
+      function animate(){
+        if(!ctx) return;
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(45, 212, 191, ${p.alpha * 0.6})`;
+          ctx.fill();
+          p.x += p.dx; p.y += p.dy;
+          if(p.x < 0) p.x = width; if(p.x > width) p.x = 0;
+          if(p.y < 0) p.y = height; if(p.y > height) p.y = 0;
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    // Intersection Observer for reveals
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-scale, .keyword').forEach(el => observer.observe(el));
+    
+    // Lucide icons
+    lucide.createIcons();
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.nav-glass');
+      if(window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+
+    // Form submission
+    document.getElementById('joinForm')?.addEventListener('submit', async function(e){
+      e.preventDefault();
+      alert('Thank you for joining YIGH! We\'ll be in touch soon.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

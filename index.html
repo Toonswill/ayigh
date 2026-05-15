@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>YIGH — Youth In Green Hydrogen</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1A5D1A',
+                        secondary: '#0E7490',
+                        accent: '#06B6D4',
+                        dark: '#1F2937'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-yigh-950 text-white">
+
+  <!-- NAVBAR -->
+  <div id="navbar-container"></div>
+
+  
+  <!-- ============ HERO ============ -->
+  <section id="hero" class="hero-gradient relative min-h-screen flex items-center justify-center overflow-hidden">
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Decorative circles -->
+    <div class="absolute top-20 left-10 w-64 h-64 rounded-full bg-yigh-500/5 blur-3xl float"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-hydrogen-500/5 blur-3xl float-delayed"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">
+         <!-- Overlay Icons -->
+        <div class="absolute inset-0 z-0 opacity-20">
+            <i data-lucide="atom" class="absolute top-20 left-10 w-16 h-16 text-emerald-400 animate-float"></i>
+            <i data-lucide="wind" class="absolute top-40 right-20 w-12 h-12 text-blue-400 animate-float" style="animation-delay: 1s;"></i>
+            <i data-lucide="sun" class="absolute bottom-40 left-20 w-20 h-20 text-yellow-400 animate-float" style="animation-delay: 2s;"></i>
+            <i data-lucide="droplets" class="absolute bottom-20 right-10 w-14 h-14 text-cyan-400 animate-float" style="animation-delay: 3s;"></i>
+        </div>
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yigh-500/30 bg-yigh-500/10 mb-8 reveal-up">
+        <span class="w-2 h-2 rounded-full bg-yigh-400 animate-pulse"></span>
+        <span class="text-yigh-300 text-xs sm:text-sm font-medium tracking-wide uppercase">Youth-Led • Africa-Focused • Future-Driven</span>
+      </div>
+
+      <!-- Main title -->
+      <h1 class="hero-title font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight mb-6">
+        <span style="animation-delay: 0.2s">Building</span>
+        <span style="animation-delay: 0.35s" class="text-yigh-400">Africa's</span>
+        <span style="animation-delay: 0.5s">Next Generation of</span><br />
+        <span style="animation-delay: 0.65s"></span>
+        <span style="animation-delay: 0.8s" class="bg-gradient-to-r from-yigh-400 to-hydrogen-400 bg-clip-text text-transparent">Green Hydrogen</span>
+        <span style="animation-delay: 0.65s">Leaders</span>
+        <span style="animation-delay: 0.95s" class="bg-gradient-to-r from-hydrogen-400 to-yigh-300 bg-clip-text text-transparent"></span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 reveal-up delay-4" id="hero-subtitle">
+        Building the next generation of leaders in <span class="keyword" data-reveal>clean energy</span>, <span class="keyword" data-reveal>climate innovation</span>, and <span class="keyword" data-reveal>sustainable development</span> across Africa.
+      </p>
+
+      <!-- CTA buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal-up delay-6">
+        <a href="#about" class="group px-8 py-4 bg-yigh-500 hover:bg-yigh-400 text-yigh-950 font-bold rounded-full transition-all hover:shadow-xl hover:shadow-yigh-500/30 flex items-center gap-2 text-sm sm:text-base">
+          Discover YIGH
+          <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
+        </a>
+        <a href="#join" class="px-8 py-4 border border-yigh-500/40 hover:border-yigh-400 text-yigh-300 hover:text-yigh-200 font-semibold rounded-full transition-all hover:bg-yigh-500/10 text-sm sm:text-base">
+          Get Involved
+        </a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
+        <i data-lucide="chevrons-down" class="w-6 h-6 text-yigh-500/50"></i>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="relative py-24  relative overflow-hidden sm:py-32 bg-gradient-to-b from-yigh-950 to-yigh-900/80">
+    <div class="section-divider max-w-5xl mx-auto mb-0"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Left: Image/Visual -->
+        <div class="reveal-left relative">
+          <div class="relative rounded-3xl overflow-hidden img-overlay aspect-[4/3] glow-pulse">
+            <img src="wind.jpg" alt="Green energy landscape" class="w-full h-full object-cover rounded-3xl" />
+            <div class="absolute bottom-0 left-0 right-0 p-6 z-10">
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-yigh-500/20 backdrop-blur-md rounded-full border border-yigh-500/30">
+                <i data-lucide="leaf" class="w-3.5 h-3.5 text-yigh-400"></i>
+                <span class="text-yigh-300 text-xs font-medium">Clean Energy Future</span>
+              </div>
+            </div>
+          </div>
+          <!-- Floating stat card -->
+          <div class="absolute -bottom-6 -right-4 sm:-right-8 bg-yigh-900/90 backdrop-blur-lg border border-yigh-500/20 rounded-2xl p-4 sm:p-5 float-delayed z-20">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-yigh-500/20 flex items-center justify-center">
+                <i data-lucide="zap" class="w-5 h-5 text-yigh-400"></i>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400">Focus Area</p>
+                <p class="font-display font-bold text-yigh-300">Green Hydrogen</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Content -->
+        <div class="reveal-right">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-yigh-500/10 border border-yigh-500/20 rounded-full mb-6">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-yigh-400"></i>
+            <span class="text-yigh-400 text-xs font-semibold tracking-wider uppercase">About YIGH</span>
+          </div>
+
+          <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-6">
+            Youth In
+            <span class="bg-gradient-to-r from-yigh-400 to-hydrogen-400 bg-clip-text text-transparent">Green Hydrogen</span>
+          </h2>
+
+          <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-6">
+            YIGH is a <span class="keyword" data-reveal>youth-led platform</span> focused on building Africa's next generation of leaders in <span class="keyword" data-reveal>green hydrogen</span>, <span class="keyword" data-reveal>clean energy</span>, <span class="keyword" data-reveal>climate innovation</span>, and <span class="keyword" data-reveal>sustainable development</span>.
+          </p>
+
+          <p class="text-gray-400 text-base leading-relaxed mb-8">
+            YIGH exists to <strong class="text-yigh-300">educate, connect, inspire, and empower</strong> young people to actively participate in the future clean molecule economy through knowledge sharing, collaboration, innovation, and leadership development.
+          </p>
+
+          <!-- Key pillars -->
+          <div class="grid grid-cols-2 gap-3 sm:gap-4">
+            <div class="flex items-center gap-3 p-3 rounded-xl bg-yigh-500/5 border border-yigh-500/10">
+              <div class="w-8 h-8 rounded-lg bg-yigh-500/15 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="book-open" class="w-4 h-4 text-yigh-400"></i>
+              </div>
+              <span class="text-sm font-medium text-gray-300">Educate</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-xl bg-teal-500/5 border border-teal-500/10">
+              <div class="w-8 h-8 rounded-lg bg-teal-500/15 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="link" class="w-4 h-4 text-teal-400"></i>
+              </div>
+              <span class="text-sm font-medium text-gray-300">Connect</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-xl bg-amber-500/5 border border-amber-500/10">
+              <div class="w-8 h-8 rounded-lg bg-amber-500/15 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+              </div>
+              <span class="text-sm font-medium text-gray-300">Inspire</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-xl bg-violet-500/5 border border-violet-500/10">
+              <div class="w-8 h-8 rounded-lg bg-violet-500/15 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="shield" class="w-4 h-4 text-violet-400"></i>
+              </div>
+              <span class="text-sm font-medium text-gray-300">Empower</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ============ VISION / TIMELINE ============ -->
+  <section id="vision" class="relative py-24 sm:py-32 bg-yigh-950 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.05),transparent_70%)]"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Section header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-yigh-500/10 border border-yigh-500/20 rounded-full mb-6 reveal-up">
+          <i data-lucide="eye" class="w-3.5 h-3.5 text-yigh-400"></i>
+          <span class="text-yigh-400 text-xs font-semibold tracking-wider uppercase">Our Vision</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-4 reveal-up delay-1">
+          Bridging the <span class="bg-gradient-to-r from-yigh-400 to-hydrogen-400 bg-clip-text text-transparent">Gap</span>
+        </h2>
+        <p class="text-gray-400 text-base sm:text-lg leading-relaxed reveal-up delay-2">
+          YIGH aims to bridge the gap between African youth and the rapidly growing global <span class="keyword" data-reveal>green hydrogen economy</span> by preparing young people with the awareness, skills, networks, and mindset needed to participate in the future of <span class="keyword" data-reveal>sustainable energy</span>.
+        </p>
+      </div>
+
+      <!-- Growth timeline -->
+      <div class="relative">
+        <!-- Vertical line -->
+        <div class="absolute left-6 sm:left-1/2 top-0 bottom-0 w-0.5 timeline-line sm:-translate-x-1/2"></div>
+
+        <!-- Step 1 -->
+        <div class="relative flex items-start mb-16 sm:mb-20 reveal-left delay-1">
+          <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-yigh-500 border-4 border-yigh-950 z-10"></div>
+          <div class="sm:w-1/2 sm:pr-12 sm:text-right ml-14 sm:ml-0">
+            <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-yigh-900/80 to-yigh-950/80 border border-yigh-500/15">
+              <div class="flex items-center gap-3 mb-3 sm:justify-end">
+                <span class="text-xs font-bold text-yigh-400 bg-yigh-500/15 px-2.5 py-1 rounded-full">Chapter 1</span>
+              </div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold mb-2">Kenya 🇰🇪</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">YIGH started with the Kenya Chapter — planting the first seed of youth leadership in green hydrogen across Africa.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative flex items-start mb-16 sm:mb-20 reveal-right delay-3">
+          <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-hydrogen-500 border-4 border-yigh-950 z-10"></div>
+          <div class="sm:w-1/2 sm:ml-auto sm:pl-12 ml-14 sm:ml-12">
+            <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-yigh-900/80 to-yigh-950/80 border border-hydrogen-500/15">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs font-bold text-hydrogen-400 bg-hydrogen-500/15 px-2.5 py-1 rounded-full">Expanding</span>
+              </div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold mb-2">East Africa 🌍</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">Growing our footprint across East Africa — connecting youth in Uganda, Tanzania, Rwanda, and beyond through shared knowledge and collaboration.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative flex items-start mb-16 sm:mb-20 reveal-left delay-5">
+          <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-yigh-400 border-4 border-yigh-950 z-10"></div>
+          <div class="sm:w-1/2 sm:pr-12 sm:text-right ml-14 sm:ml-0">
+            <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-yigh-900/80 to-yigh-950/80 border border-yigh-400/15">
+              <div class="flex items-center gap-3 mb-3 sm:justify-end">
+                <span class="text-xs font-bold text-yigh-300 bg-yigh-400/15 px-2.5 py-1 rounded-full">Scaling</span>
+              </div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold mb-2">The African Continent 🌐</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">Expanding across the continent — building a pan-African network of youth leaders driving the clean energy transition from within.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative flex items-start reveal-right delay-7">
+          <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-yigh-400 to-hydrogen-400 border-4 border-yigh-950 z-10"></div>
+          <div class="sm:w-1/2 sm:ml-auto sm:pl-12 ml-14 sm:ml-12">
+            <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-yigh-500/20 to-hydrogen-500/10 border border-yigh-400/25 glow-pulse">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs font-bold text-yigh-300 bg-yigh-400/20 px-2.5 py-1 rounded-full">Vision</span>
+              </div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold mb-2">Global Recognition 🚀</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">Becoming a globally recognized youth-driven organization advancing the clean energy transition — representing African youth on the world stage.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ FOCUS AREAS ============ -->
+  <section id="focus" class="relative py-24 sm:py-32 bg-yigh-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-yigh-500/10 border border-yigh-500/20 rounded-full mb-6 reveal-up">
+          <i data-lucide="target" class="w-3.5 h-3.5 text-yigh-400"></i>
+          <span class="text-yigh-400 text-xs font-semibold tracking-wider uppercase">Focus Areas</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-4 reveal-up delay-1">
+          What We <span class="bg-gradient-to-r from-yigh-400 to-hydrogen-400 bg-clip-text text-transparent">Focus On</span>
+        </h2>
+        <p class="text-gray-400 text-base sm:text-lg reveal-up delay-2">
+          Our work spans across critical areas shaping Africa's clean energy future and sustainable development.
+        </p>
+      </div>
+
+      <!-- Focus cards grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5">
+        <!-- Card 1 -->
+        <div class="focus-card group p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-yigh-900/60 to-yigh-950/60 border border-yigh-500/10 hover:border-yigh-500/30 reveal-scale delay-1">
+          <div class="w-12 h-12 rounded-xl bg-yigh-500/15 flex items-center justify-center mb-4 group-hover:bg-yigh-500/25 transition-colors">
+            <i data-lucide="flame" class="w-6 h-6 text-yigh-400"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-2">Green Hydrogen</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Advancing the clean molecule that powers the future of energy.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="focus-card group p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-yigh-900/60 to-yigh-950/60 border border-yigh-500/10 hover:border-yigh-500/30 reveal-scale delay-2">
+          <div class="w-12 h-12 rounded-xl bg-yigh-500/15 flex items-center justify-center mb-4 group-hover:bg-yigh-500/25 transition-colors">
+            <i data-lucide="wind" class="w-6 h-6 text-yigh-400"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-2">Renewable Energy</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Harnessing wind, solar, and hydro for sustainable power generation.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="focus-card group p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-yigh-900/60 to-yigh-950/60 border border-yigh-500/10 hover:border-yigh-500/30 reveal-scale delay-3">
+          <div class="w-12 h-12 rounded-xl bg-hydrogen-500/15 flex items-center justify-center mb-4 group-hover:bg-hydrogen-500/25 transition-colors">
+            <i data-lucide="atom" class="w-6 h-6 text-hydrogen-400"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-2">Clean Molecules</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Exploring the science of clean molecules driving the energy transition.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="focus-card group p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-yigh-900/60 to-yigh-950/60 border border-yigh-500/10 hover:border-yigh-500/30 reveal-scale delay-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/15 flex items-center justify-center mb-4 group-hover:bg-amber-500/25 transition-colors">
+            <i data-lucide="lightbulb" class="w-6 h-6 text-amber-400"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-2">Climate Innovation</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Championing creative solutions to the climate crisis through innovation.</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="focus-card group p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-yigh-900/60 to-yigh-950/60 border border-yigh-500/10 hover:border-yigh-500/30 reveal-scale delay-5">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/15 flex items-center justify-center mb-4 group-hover:bg-emerald-500/25 transition-colors">
+            <i data-lucide="sprout" class="w-6 h-6 text-emerald-400"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-2">Sustainability</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Promoting practices that protect our planet for future generations.</p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="focus-card group p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-yigh-900/60 to-yigh-950/60 border border-yigh-500/10 hover:border-yigh-500/30 reveal-scale delay-6">
+          <div class="w-12 h-12 rounded-xl bg-yigh-500/15 flex items-center justify-center mb-4 group-hover:bg-yigh-500/25 transition-colors">
+            <i data-lucide="factory" class="w-6 h-6 text-yigh-400"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-2">Green Industrialization</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Building industries that thrive without harming the environment.</p>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="focus-card group p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-yigh-900/60 to-yigh-950/60 border border-yigh-500/10 hover:border-yigh-500/30 reveal-scale delay-7">
+          <div class="w-12 h-12 rounded-xl bg-yigh-500/15 flex items-center justify-center mb-4 group-hover:bg-yigh-500/25 transition-colors">
+            <i data-lucide="users" class="w-6 h-6 text-yigh-400"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-2">Youth Capacity Building</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Equipping young people with skills, knowledge, and confidence to lead.</p>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="focus-card group p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-yigh-900/60 to-yigh-950/60 border border-yigh-500/10 hover:border-yigh-500/30 reveal-scale delay-8">
+          <div class="w-12 h-12 rounded-xl bg-yigh-500/15 flex items-center justify-center mb-4 group-hover:bg-yigh-500/25 transition-colors">
+            <i data-lucide="microscope" class="w-6 h-6 text-yigh-400"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-2">Research & Knowledge</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Sharing research and insights to drive informed decision-making.</p>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="focus-card group p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-yigh-900/60 to-yigh-950/60 border border-yigh-500/10 hover:border-yigh-500/30 reveal-scale delay-9">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/15 flex items-center justify-center mb-4 group-hover:bg-indigo-500/25 transition-colors">
+            <i data-lucide="scroll-text" class="w-6 h-6 text-indigo-400"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-2">Policy Awareness</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Understanding and shaping policies that govern the energy transition.</p>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="focus-card group p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-yigh-900/60 to-yigh-950/60 border border-yigh-500/10 hover:border-yigh-500/30 reveal-scale delay-10">
+          <div class="w-12 h-12 rounded-xl bg-violet-500/15 flex items-center justify-center mb-4 group-hover:bg-violet-500/25 transition-colors">
+            <i data-lucide="cpu" class="w-6 h-6 text-violet-400"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-2">Future Energy Tech</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Exploring emerging technologies that will reshape energy systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ OPPORTUNITIES ============ -->
+  <section id="opportunities" class="relative py-24 sm:py-32 bg-gradient-to-b from-yigh-950 via-yigh-900/40 to-yigh-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Left content -->
+        <div class="reveal-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-yigh-500/10 border border-yigh-500/20 rounded-full mb-6">
+            <i data-lucide="rocket" class="w-3.5 h-3.5 text-yigh-400"></i>
+            <span class="text-yigh-400 text-xs font-semibold tracking-wider uppercase">Opportunities</span>
+          </div>
+
+          <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-6">
+            Creating <span class="bg-gradient-to-r from-yigh-400 to-hydrogen-400 bg-clip-text text-transparent">Pathways</span> for Young Leaders
+          </h2>
+
+          <p class="text-gray-400 text-base sm:text-lg leading-relaxed mb-10">
+            YIGH creates meaningful opportunities for young people to learn, grow, and lead in the green hydrogen and clean energy space. Through our programs, we open doors that connect youth to the global clean energy economy.
+          </p>
+
+          <!-- Opportunity list -->
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 group reveal-left delay-1">
+              <div class="w-10 h-10 rounded-xl bg-yigh-500/15 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-yigh-500/25 transition-colors">
+                <i data-lucide="presentation" class="w-5 h-5 text-yigh-400"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white mb-1">Webinars & Events</h4>
+                <p class="text-gray-400 text-sm">Interactive sessions featuring industry experts, thought leaders, and innovators.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 group reveal-left delay-2">
+              <div class="w-10 h-10 rounded-xl bg-teal-500/15 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-teal-500/25 transition-colors">
+                <i data-lucide="graduation-cap" class="w-5 h-5 text-teal-400"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white mb-1">Learning Programs</h4>
+                <p class="text-gray-400 text-sm">Structured educational pathways to build expertise in green hydrogen and clean energy.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 group reveal-left delay-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/15 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-emerald-500/25 transition-colors">
+                <i data-lucide="network" class="w-5 h-5 text-emerald-400"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white mb-1">Networking Opportunities</h4>
+                <p class="text-gray-400 text-sm">Connect with professionals, peers, and mentors across the energy sector.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 group reveal-left delay-4">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-amber-500/25 transition-colors">
+                <i data-lucide="message-circle" class="w-5 h-5 text-amber-400"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white mb-1">Innovation Discussions</h4>
+                <p class="text-gray-400 text-sm">Collaborative forums to exchange ideas and co-create solutions for energy challenges.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 group reveal-left delay-5">
+              <div class="w-10 h-10 rounded-xl bg-indigo-500/15 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-indigo-500/25 transition-colors">
+                <i data-lucide="building-2" class="w-5 h-5 text-indigo-400"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white mb-1">Industry Engagement</h4>
+                <p class="text-gray-400 text-sm">Direct exposure to the green hydrogen industry through partnerships and field engagement.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 group reveal-left delay-6">
+              <div class="w-10 h-10 rounded-xl bg-violet-500/15 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-violet-500/25 transition-colors">
+                <i data-lucide="handshake" class="w-5 h-5 text-violet-400"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white mb-1">Mentorship & Collaboration</h4>
+                <p class="text-gray-400 text-sm">Guided mentorship from experts and collaborative projects with global partners.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right visual -->
+        <div class="reveal-right relative">
+          <div class="relative rounded-3xl overflow-hidden img-overlay aspect-[4/5]">
+            <img src="forth.jpg" alt="Youth learning and collaborating" class="w-full h-full object-cover rounded-3xl" />
+          </div>
+          <!-- Stats overlay -->
+          <div class="absolute -top-4 -left-4 sm:-left-8 bg-yigh-900/90 backdrop-blur-lg border border-yigh-500/20 rounded-2xl p-5 float z-20">
+            <div class="text-center">
+              <p class="text-3xl font-display font-bold text-yigh-400 counter-value" data-target="6">0</p>
+              <p class="text-xs text-gray-400 mt-1">Programs</p>
+            </div>
+          </div>
+          <div class="absolute -bottom-4 -right-4 sm:-right-8 bg-yigh-900/90 backdrop-blur-lg border border-yigh-500/20 rounded-2xl p-5 float-delayed z-20">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-yigh-500/20 flex items-center justify-center">
+                <i data-lucide="globe" class="w-5 h-5 text-yigh-400"></i>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400">Growing</p>
+                <p class="font-display font-bold text-yigh-300">Across Africa</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!--Upcoming events-->
+  <!-- ============ UPCOMING EVENTS ============ -->
+<section id="events" class="relative py-24 sm:py-32 bg-gradient-to-b from-yigh-900/40 via-yigh-950 to-yigh-950 overflow-hidden">
+
+  <!-- Background Glow -->
+  <div class="absolute top-0 left-0 w-96 h-96 bg-yigh-500/10 blur-3xl rounded-full"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-hydrogen-500/10 blur-3xl rounded-full"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-yigh-500/10 border border-yigh-500/20 rounded-full mb-6 reveal-up">
+        <i data-lucide="calendar-days" class="w-4 h-4 text-yigh-400"></i>
+        <span class="text-yigh-400 text-xs font-semibold tracking-wider uppercase">
+          Upcoming Events
+        </span>
+      </div>
+
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-4 reveal-up delay-1">
+        Events Shaping the
+        <span class="bg-gradient-to-r from-yigh-400 to-hydrogen-400 bg-clip-text text-transparent">
+          Future
+        </span>
+      </h2>
+
+      <p class="text-gray-400 text-base sm:text-lg reveal-up delay-2">
+        Join conversations, workshops, symposiums, and networking events driving Africa’s green hydrogen ecosystem.
+      </p>
+    </div>
+
+    <!-- Events Grid -->
+    <div class="grid lg:grid-cols-3 gap-8">
+
+      <!-- Event 1 -->
+      <div class="group relative rounded-3xl overflow-hidden border border-yigh-500/15 bg-gradient-to-b from-yigh-900/70 to-yigh-950/80 hover:border-yigh-500/40 transition-all duration-500 hover:-translate-y-2 reveal-scale delay-1">
+
+        <div class="absolute top-4 right-4 z-20">
+          <span class="px-3 py-1 rounded-full bg-yigh-500/20 border border-yigh-500/20 text-yigh-300 text-xs font-semibold">
+            Featured
+          </span>
+        </div>
+
+        <div class="h-56 overflow-hidden">
+          <img src="image001.png" alt="Green Hydrogen Symposium"
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </div>
+
+        <div class="p-7">
+
+          <div class="flex items-center gap-3 text-sm text-yigh-400 mb-4">
+            <div class="flex items-center gap-1">
+              <i data-lucide="calendar" class="w-4 h-4"></i>
+              <span>May 20–21, 2026</span>
+            </div>
+
+            <span class="w-1 h-1 rounded-full bg-gray-500"></span>
+
+            <div class="flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              <span>Nairobi</span>
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-bold text-white mb-3">
+            Green Hydrogen Symposium
+          </h3>
+
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            Bringing together industry leaders, policymakers, startups, and youth innovators to explore Africa’s hydrogen future.
+          </p>
+
+          <div class="flex items-center justify-between">
+
+            <div class="flex items-center gap-2 text-sm text-gray-400">
+              <i data-lucide="users" class="w-4 h-4"></i>
+              <span>500+ Participants</span>
+            </div>
+
+            <a href="#join"
+              class="inline-flex items-center gap-2 text-yigh-300 font-medium hover:text-yigh-200 transition">
+              Register
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div class="group relative rounded-3xl overflow-hidden border border-yigh-500/15 bg-gradient-to-b from-yigh-900/70 to-yigh-950/80 hover:border-yigh-500/40 transition-all duration-500 hover:-translate-y-2 reveal-scale delay-2">
+
+        <div class="h-56 overflow-hidden">
+          <img src="event2.jpg" alt="Career Webinar"
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </div>
+
+        <div class="p-7">
+
+          <div class="flex items-center gap-3 text-sm text-hydrogen-400 mb-4">
+            <div class="flex items-center gap-1">
+              <i data-lucide="calendar" class="w-4 h-4"></i>
+              <span>June 2026</span>
+            </div>
+
+            <span class="w-1 h-1 rounded-full bg-gray-500"></span>
+
+            <div class="flex items-center gap-1">
+              <i data-lucide="monitor" class="w-4 h-4"></i>
+              <span>Virtual</span>
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-bold text-white mb-3">
+            Green Hydrogen Job Market Webinar
+          </h3>
+
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            Learn about emerging career opportunities, workforce development, and future skills in the hydrogen economy.
+          </p>
+
+          <div class="flex items-center justify-between">
+
+            <div class="flex items-center gap-2 text-sm text-gray-400">
+              <i data-lucide="globe" class="w-4 h-4"></i>
+              <span>Pan-African Audience</span>
+            </div>
+
+            <a href="#join"
+              class="inline-flex items-center gap-2 text-yigh-300 font-medium hover:text-yigh-200 transition">
+              Join Event
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Event 3 -->
+      <div class="group relative rounded-3xl overflow-hidden border border-yigh-500/15 bg-gradient-to-b from-yigh-900/70 to-yigh-950/80 hover:border-yigh-500/40 transition-all duration-500 hover:-translate-y-2 reveal-scale delay-3">
+
+        <div class="h-56 overflow-hidden">
+          <img src="event3.jpg" alt="Innovation Forum"
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </div>
+
+        <div class="p-7">
+
+          <div class="flex items-center gap-3 text-sm text-emerald-400 mb-4">
+            <div class="flex items-center gap-1">
+              <i data-lucide="calendar" class="w-4 h-4"></i>
+              <span>July 2026</span>
+            </div>
+
+            <span class="w-1 h-1 rounded-full bg-gray-500"></span>
+
+            <div class="flex items-center gap-1">
+              <i data-lucide="building-2" class="w-4 h-4"></i>
+              <span>Hybrid</span>
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-bold text-white mb-3">
+            Youth Innovation Forum
+          </h3>
+
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            A platform for young innovators and startups to pitch climate and clean energy solutions shaping the continent.
+          </p>
+
+          <div class="flex items-center justify-between">
+
+            <div class="flex items-center gap-2 text-sm text-gray-400">
+              <i data-lucide="lightbulb" class="w-4 h-4"></i>
+              <span>Innovation Showcase</span>
+            </div>
+
+            <a href="#join"
+              class="inline-flex items-center gap-2 text-yigh-300 font-medium hover:text-yigh-200 transition">
+              Learn More
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Partners Section with Auto-Scrolling -->
+
+  <!-- ============ IMPACT NUMBERS ============ -->
+  <section class="relative py-20 sm:py-24 bg-gradient-to-r from-emerald-800/60 via-emerald-950 to-emerald-900/60 via-yigh-950 to-yigh-900/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div class="text-center reveal-up delay-1">
+          <p class="text-4xl sm:text-5xl font-display font-bold bg-gradient-to-b from-yigh-300 to-yigh-500 bg-clip-text text-transparent counter-value" data-target="10">0</p>
+          <p class="text-gray-400 text-sm mt-2">Focus Areas</p>
+        </div>
+        <div class="text-center reveal-up delay-2">
+          <p class="text-4xl sm:text-5xl font-display font-bold bg-gradient-to-b from-yigh-300 to-yigh-500 bg-clip-text text-transparent counter-value" data-target="6">0</p>
+          <p class="text-gray-400 text-sm mt-2">Programs</p>
+        </div>
+        <div class="text-center reveal-up delay-3">
+          <p class="text-4xl sm:text-5xl font-display font-bold bg-gradient-to-b from-yigh-300 to-yigh-500 bg-clip-text text-transparent">1<span class="text-yigh-400">+</span></p>
+          <p class="text-gray-400 text-sm mt-2">Chapter Launched</p>
+        </div>
+        <div class="text-center reveal-up delay-4">
+          <p class="text-4xl sm:text-5xl font-display font-bold bg-gradient-to-b from-hydrogen-400 to-yigh-400 bg-clip-text text-transparent">∞</p>
+          <p class="text-gray-400 text-sm mt-2">Potential</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Board of Directors & leadership team , 3 co-founders and 4 board members-->
+<!-- ============ BOARD & TEAM ============ -->
+<section id="team" class="relative py-24 sm:py-32 bg-yigh-950 overflow-hidden">
+
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.08),transparent_60%)]"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-20">
+
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-yigh-500/10 border border-yigh-500/20 rounded-full mb-6 reveal-up">
+        <i data-lucide="users-2" class="w-4 h-4 text-yigh-400"></i>
+        <span class="text-yigh-400 text-xs font-semibold tracking-wider uppercase">
+          Leadership
+        </span>
+      </div>
+
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+        Board & Leadership
+        <span class="bg-gradient-to-r from-yigh-400 to-hydrogen-400 bg-clip-text text-transparent">
+          Team
+        </span>
+      </h2>
+
+      <p class="text-gray-400 text-base sm:text-lg">
+        Meet the passionate leaders driving YIGH’s mission to empower Africa’s next generation in green hydrogen and sustainable energy.
+      </p>
+
+    </div>
+
+    <!-- Co-Founders -->
+    <div class="mb-20">
+
+      <div class="flex items-center gap-3 mb-10">
+        <div class="w-10 h-10 rounded-xl bg-yigh-500/15 flex items-center justify-center">
+          <i data-lucide="sparkles" class="w-5 h-5 text-yigh-400"></i>
+        </div>
+
+        <h3 class="text-2xl sm:text-3xl font-bold text-white">
+          Co-Founders
+        </h3>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+
+        <!-- Founder -->
+        <div class="group text-center reveal-scale delay-1">
+          <div class="relative overflow-hidden rounded-3xl border border-yigh-500/15 bg-gradient-to-b from-yigh-900/70 to-yigh-950/80 p-6 hover:border-yigh-500/40 transition-all duration-500">
+
+            <div class="relative w-40 h-40 mx-auto mb-6 overflow-hidden rounded-2xl">
+              <img src="sol.jpeg" alt="Founder"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+            </div>
+
+            <h4 class="text-xl font-bold text-white mb-1">
+              Solomon Kuria
+            </h4>
+
+            <p class="text-yigh-400 font-medium mb-4">
+              Co-Founder & Executive Lead
+            </p>
+
+            <p class="text-gray-400 text-sm leading-relaxed mb-5">
+              Leading strategic partnerships, youth engagement, and clean energy advocacy across Africa.
+            </p>
+
+            <div class="flex items-center justify-center gap-3">
+              <a href="#" class="w-10 h-10 rounded-xl bg-yigh-500/10 hover:bg-yigh-500/20 flex items-center justify-center transition">
+                <i data-lucide="linkedin" class="w-4 h-4 text-yigh-300"></i>
+              </a>
+
+              <a href="#" class="w-10 h-10 rounded-xl bg-yigh-500/10 hover:bg-yigh-500/20 flex items-center justify-center transition">
+                <i data-lucide="mail" class="w-4 h-4 text-yigh-300"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Founder -->
+        <div class="group text-center reveal-scale delay-2">
+          <div class="relative overflow-hidden rounded-3xl border border-yigh-500/15 bg-gradient-to-b from-yigh-900/70 to-yigh-950/80 p-6 hover:border-yigh-500/40 transition-all duration-500">
+
+            <div class="relative w-40 h-40 mx-auto mb-6 overflow-hidden rounded-2xl">
+              <img src="Lor.jpeg" alt="Founder"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+            </div>
+
+            <h4 class="text-xl font-bold text-white mb-1">
+              Lorraine Njeri
+            </h4>
+
+            <p class="text-hydrogen-400 font-medium mb-4">
+              Co-Founder & Programs Lead
+            </p>
+
+            <p class="text-gray-400 text-sm leading-relaxed mb-5">
+              Coordinating educational programs, webinars, and youth innovation initiatives.
+            </p>
+
+            <div class="flex items-center justify-center gap-3">
+              <a href="#" class="w-10 h-10 rounded-xl bg-yigh-500/10 hover:bg-yigh-500/20 flex items-center justify-center transition">
+                <i data-lucide="linkedin" class="w-4 h-4 text-yigh-300"></i>
+              </a>
+
+              <a href="#" class="w-10 h-10 rounded-xl bg-yigh-500/10 hover:bg-yigh-500/20 flex items-center justify-center transition">
+                <i data-lucide="mail" class="w-4 h-4 text-yigh-300"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Founder -->
+        <div class="group text-center reveal-scale delay-3">
+          <div class="relative overflow-hidden rounded-3xl border border-yigh-500/15 bg-gradient-to-b from-yigh-900/70 to-yigh-950/80 p-6 hover:border-yigh-500/40 transition-all duration-500">
+
+            <div class="relative w-40 h-40 mx-auto mb-6 overflow-hidden rounded-2xl">
+              <img src="will.JPG" alt="Founder"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+            </div>
+
+            <h4 class="text-xl font-bold text-white mb-1">
+              Wilson Ngunjiri
+            </h4>
+
+            <p class="text-emerald-400 font-medium mb-4">
+              Co-Founder & Partnerships Lead
+            </p>
+
+            <p class="text-gray-400 text-sm leading-relaxed mb-5">
+              Building collaborations with industry, academia, and climate innovation ecosystems.
+            </p>
+
+            <div class="flex items-center justify-center gap-3">
+              <a href="#" class="w-10 h-10 rounded-xl bg-yigh-500/10 hover:bg-yigh-500/20 flex items-center justify-center transition">
+                <i data-lucide="linkedin" class="w-4 h-4 text-yigh-300"></i>
+              </a>
+
+              <a href="#" class="w-10 h-10 rounded-xl bg-yigh-500/10 hover:bg-yigh-500/20 flex items-center justify-center transition">
+                <i data-lucide="mail" class="w-4 h-4 text-yigh-300"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Board Members -->
+    <div>
+
+      <div class="flex items-center gap-3 mb-10">
+        <div class="w-10 h-10 rounded-xl bg-hydrogen-500/15 flex items-center justify-center">
+          <i data-lucide="briefcase" class="w-5 h-5 text-hydrogen-400"></i>
+        </div>
+
+        <h3 class="text-2xl sm:text-3xl font-bold text-white">
+          Board Members
+        </h3>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Board Card -->
+        <div class="p-6 rounded-2xl border border-yigh-500/15 bg-gradient-to-b from-yigh-900/70 to-yigh-950/80 hover:border-yigh-500/40 transition-all duration-500 reveal-up delay-1">
+          <h4 class="text-lg font-bold text-white mb-1">Board Member</h4>
+          <p class="text-yigh-400 text-sm mb-4">Chairperson</p>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Providing strategic oversight and governance for organizational growth and impact.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-yigh-500/15 bg-gradient-to-b from-yigh-900/70 to-yigh-950/80 hover:border-yigh-500/40 transition-all duration-500 reveal-up delay-2">
+          <h4 class="text-lg font-bold text-white mb-1">Board Member</h4>
+          <p class="text-hydrogen-400 text-sm mb-4">Technical Advisor</p>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Supporting technical direction and clean energy innovation initiatives.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-yigh-500/15 bg-gradient-to-b from-yigh-900/70 to-yigh-950/80 hover:border-yigh-500/40 transition-all duration-500 reveal-up delay-3">
+          <h4 class="text-lg font-bold text-white mb-1">Board Member</h4>
+          <p class="text-emerald-400 text-sm mb-4">Programs Advisor</p>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Guiding educational and youth development programs across the network.
+          </p>
+        </div>
+        <div class="p-6 rounded-2xl border border-yigh-500/15 bg-gradient-to-b from-yigh-900/70 to-yigh-950/80 hover:border-yigh-500/40 transition-all duration-500 reveal-up delay-4">
+          <h4 class="text-lg font-bold text-white mb-1">Board Member</h4>
+          <p class="text-amber-400 text-sm mb-4">Industry Advisor</p>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Connecting YIGH with industry opportunities, partnerships, and ecosystem stakeholders.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+  <!-- ============ JOIN CTA ============ -->
+  <!-- Join Section + Embedded Form -->
+<section id="join" class="relative py-24 sm:py-32 bg-yigh-950 overflow-hidden">
+  
+  <!-- Background Effects -->
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(34,211,238,0.08),transparent_60%)]"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(45,212,191,0.06),transparent_60%)]"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <!-- Section Header -->
+    <div class="text-center mb-16 reveal-scale">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-yigh-500/10 border border-yigh-500/20 rounded-full mb-6">
+        <i data-lucide="heart" class="w-3.5 h-3.5 text-yigh-400"></i>
+        <span class="text-yigh-400 text-xs font-semibold tracking-wider uppercase">
+          Get Involved
+        </span>
+      </div>
+
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-4 text-white">
+        Ready to Shape the 
+        <span class="bg-gradient-to-r from-yigh-400 to-hydrogen-400 bg-clip-text text-transparent">
+          Future
+        </span>?
+      </h2>
+
+      <p class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
+        Join a growing community of young Africans who are stepping up to lead in green hydrogen, clean energy, and sustainable development. Your journey starts here.
+      </p>
+    </div>
+
+    <!-- Main Card -->
+    <div class="rounded-3xl overflow-hidden border border-yigh-500/15 bg-gradient-to-b from-yigh-900/60 to-yigh-950/80 backdrop-blur-sm shadow-2xl">
+      
+      <div class="grid lg:grid-cols-2">
+
+        <!-- Left Content -->
+        <div class="p-8 sm:p-12 bg-gradient-to-br from-yigh-500/20 to-hydrogen-500/10 border-b lg:border-b-0 lg:border-r border-yigh-500/10">
+          
+          <div class="max-w-md">
+            <h3 class="text-3xl font-bold text-white mb-6">
+              Join the Green Hydrogen Revolution
+            </h3>
+
+            <p class="text-gray-300 mb-8 leading-relaxed">
+              Become part of Africa's premier youth network for green hydrogen innovation, climate leadership, and sustainable development.
+            </p>
+
+            <div class="space-y-5">
+
+              <div class="flex items-start gap-4">
+                <div class="w-6 h-6 rounded-full bg-yigh-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i data-lucide="check" class="w-4 h-4 text-yigh-950"></i>
+                </div>
+                <div>
+                  <h4 class="text-white font-semibold">Exclusive Training</h4>
+                  <p class="text-gray-400 text-sm">
+                    Access workshops, webinars, and technical learning opportunities.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-6 h-6 rounded-full bg-yigh-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i data-lucide="check" class="w-4 h-4 text-yigh-950"></i>
+                </div>
+                <div>
+                  <h4 class="text-white font-semibold">Industry Network</h4>
+                  <p class="text-gray-400 text-sm">
+                    Connect with researchers, startups, investors, and policymakers.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-6 h-6 rounded-full bg-yigh-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i data-lucide="check" class="w-4 h-4 text-yigh-950"></i>
+                </div>
+                <div>
+                  <h4 class="text-white font-semibold">Research & Innovation</h4>
+                  <p class="text-gray-400 text-sm">
+                    Participate in projects shaping Africa’s hydrogen economy.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Form -->
+        <div class="p-8 sm:p-12 bg-white">
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-8">
+            Sign Up Now
+          </h3>
+
+          <form id="joinForm" class="space-y-6">
+
+            <!-- Full Name -->
+            <div>
+              <label for="fullName" class="block text-sm font-medium text-gray-700 mb-2">
+                Full Name
+              </label>
+              <input 
+                type="text"
+                id="fullName"
+                name="fullName"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yigh-500 focus:border-yigh-500 outline-none transition"
+                placeholder="Enter your full name"
+              >
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                Phone Number
+              </label>
+              <input 
+                type="text"
+                id="phone"
+                name="phone"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yigh-500 focus:border-yigh-500 outline-none transition"
+                placeholder="+254..."
+              >
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                Email Address
+              </label>
+              <input 
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yigh-500 focus:border-yigh-500 outline-none transition"
+                placeholder="you@example.com"
+              >
+            </div>
+
+            <!-- Country -->
+            <div>
+              <label for="country" class="block text-sm font-medium text-gray-700 mb-2">
+                Country
+              </label>
+
+              <select id="country" name="country" required
+                                    class="w-full text-gray-900 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent focus:border-accent">
+                                    <option value="" disabled selected>Select your country</option>
+                                    <option value="Nigeria">Nigeria</option>
+                                    <option value="South Africa">South Africa</option>
+                                    <option value="Kenya">Kenya</option>
+                                    <option value="Egypt">Egypt</option>
+                                    <option value="Other">Other</option>
+                                </select>
+            </div>
+
+            <!-- Background -->
+            <div>
+              <label for="background" class="block text-sm font-medium text-gray-700 mb-2">
+                Background / Profession
+              </label>
+
+              <select id="background" name="background" required
+                                    class="w-full px-4 text-gray-900 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent focus:border-accent">
+                                    <option value="" disabled selected>Select your background</option>
+                                    <option value="Student">Student</option>
+                                    <option value="Researcher">Researcher</option>
+                                    <option value="Engineer">Engineer</option>
+                                    <option value="Policy Maker">Policy Maker</option>
+                                    <option value="Entrepreneur">Entrepreneur</option>
+                                    <option value="Other">Other</option>
+                                </select>
+            </div>
+
+            <!-- Interests -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-3">
+                Areas of Interest  (Select all that apply)
+              </label>
+
+              <div class="grid grid-cols-2 gap-3">
+
+                <label class="flex items-center gap-2 text-sm text-gray-700">
+                  <input type="checkbox" name="interests" value="Technology"
+                    class="rounded border-gray-300 text-yigh-500 focus:ring-yigh-500">
+                  Technology
+                </label>
+
+                <label class="flex items-center gap-2 text-sm text-gray-700">
+                  <input type="checkbox" name="interests" value="Policy"
+                    class="rounded border-gray-300 text-yigh-500 focus:ring-yigh-500">
+                  Policy
+                </label>
+
+                <label class="flex items-center gap-2 text-sm text-gray-700">
+                  <input type="checkbox" name="interests" value="Research"
+                    class="rounded border-gray-300 text-yigh-500 focus:ring-yigh-500">
+                  Research
+                </label>
+
+                <label class="flex items-center gap-2 text-sm text-gray-700">
+                  <input type="checkbox" name="interests" value="Business"
+                    class="rounded border-gray-300 text-yigh-500 focus:ring-yigh-500">
+                  Business
+                </label>
+
+                <label class="flex items-center gap-2 text-sm text-gray-700">
+                  <input type="checkbox" name="interests" value="Business"
+                    class="rounded border-gray-300 text-yigh-500 focus:ring-yigh-500">
+                  Patnerships
+                </label>
+
+
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="pt-2">
+              <button
+                type="submit"
+                class="w-full py-4 px-6 bg-yigh-500 hover:bg-yigh-400 text-yigh-950 font-bold rounded-xl transition-all hover:shadow-xl hover:shadow-yigh-500/30 flex items-center justify-center gap-2"
+              >
+                Submit Application
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- FOOTER -->
+   <!-- FOOTER -->
+<custom-footer></custom-footer>
+
+  <div id="footer-container"></div>
+
+  <!-- COMPONENTS -->
+  <script src="components/navbar.js"></script>
+  <script src="components/footer.js"></script>
+
+<script>
+document.getElementById('joinForm')
+.addEventListener('submit', async function (e) {
+
+    e.preventDefault();
+
+    const submitButton = document.querySelector("button[type='submit']");
+    submitButton.innerText = "Submitting...";
+
+    const formData = new FormData(this);
+
+    const data = {};
+
+    formData.forEach((value, key) => {
+
+        if (key === 'interests') {
+
+            if (!data[key]) data[key] = [];
+
+            data[key].push(value);
+
+        } else {
+
+            data[key] = value;
+
+        }
+
+    });
+
+    try {
+
+        await fetch(
+            "https://script.google.com/macros/s/AKfycbyn6yjUZBpSMJ2g3s75cgeKQbqtU--bwUut_Dtxp_dqCKThRjIzmbolGZ5kPmaXgeLU/exec",
+            {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }
+        );
+
+        alert("Application submitted successfully!");
+
+        this.reset();
+
+    } catch (error) {
+
+        console.error("Form error:", error);
+
+        alert("Something went wrong.");
+
+    }
+
+    submitButton.innerText = "Submit Application";
+
+});
+
+</script>
+  <!-- MAIN SCRIPT -->
+  <script src="script.js"></script>
+
+</body>
+</html>
