@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportunities & Careers | YIGH - Youth Initiative for Green Hydrogen</title>
+    <meta name="description" content="Explore green hydrogen opportunities in Africa: mentorships, scholarships, jobs, internships, training, and grants for young Africans.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        yigh: {
+                            green: '#10b981',
+                            dark: '#064e3b',
+                            light: '#d1fae5',
+                            teal: '#0d9488',
+                            blue: '#0284c7',
+                            accent: '#f59e0b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .filter-btn.active {
+            background-color: #10b981;
+            color: white;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 10px; }
+        
+        /* Hide scrollbar on category tabs but keep functionality */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased">
+
+    <!-- Navigation (same as homepage) -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-yigh-green to-yigh-teal rounded-full flex items-center justify-center shadow-lg">
+                        <i data-lucide="zap" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="text-xl md:text-2xl font-bold text-yigh-dark tracking-tight">YIGH</span>
+                    <span class="hidden sm:inline text-xs font-semibold bg-yigh-light text-yigh-green px-2 py-0.5 rounded-full">Opportunities</span>
+                </a>
+                
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html#about" class="text-slate-700 hover:text-yigh-green transition-colors font-medium">About</a>
+                    <a href="index.html#vision" class="text-slate-700 hover:text-yigh-green transition-colors font-medium">Vision</a>
+                    <a href="opportunities.html" class="text-yigh-green font-semibold border-b-2 border-yigh-green pb-1">Opportunities</a>
+                    <a href="index.html#events" class="text-slate-700 hover:text-yigh-green transition-colors font-medium">Events</a>
+                    <a href="index.html#team" class="text-slate-700 hover:text-yigh-green transition-colors font-medium">Team</a>
+                    <a href="index.html#join" class="bg-yigh-green hover:bg-yigh-dark text-white px-6 py-2.5 rounded-full font-medium transition-all transform hover:scale-105 shadow-lg">
+                        Join YIGH
+                    </a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-700 hover:text-yigh-green focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg absolute w-full border-b border-gray-100 shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html#about" class="block text-slate-700 hover:text-yigh-green py-3 px-4 rounded-lg hover:bg-gray-50">About</a>
+                <a href="index.html#vision" class="block text-slate-700 hover:text-yigh-green py-3 px-4 rounded-lg hover:bg-gray-50">Vision</a>
+                <a href="opportunities.html" class="block text-yigh-green bg-yigh-light py-3 px-4 rounded-lg font-medium">Opportunities</a>
+                <a href="index.html#events" class="block text-slate-700 hover:text-yigh-green py-3 px-4 rounded-lg hover:bg-gray-50">Events</a>
+                <a href="index.html#team" class="block text-slate-700 hover:text-yigh-green py-3 px-4 rounded-lg hover:bg-gray-50">Team</a>
+                <a href="index.html#join" class="block bg-yigh-green text-white py-3 px-4 rounded-lg text-center font-medium mt-4">Join YIGH</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-yigh-light via-white to-blue-50">
+        <div class="absolute inset-0 opacity-20">
+            <i data-lucide="atom" class="absolute top-20 left-10 w-16 h-16 text-yigh-green animate-float"></i>
+            <i data-lucide="briefcase" class="absolute bottom-20 right-20 w-12 h-12 text-yigh-teal animate-float" style="animation-delay: 1s;"></i>
+            <i data-lucide="graduation-cap" class="absolute top-40 right-1/4 w-10 h-10 text-amber-500 animate-float" style="animation-delay: 2s;"></i>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yigh-green/20 border border-yigh-green/40 text-yigh-dark mb-6 animate-fade-in-up">
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                <span class="text-sm font-semibold tracking-wide uppercase">Your Future in Green Hydrogen Starts Here</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6 animate-fade-in-up" style="animation-delay: 0.1s;">
+                Opportunities & Careers <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-yigh-green to-yigh-teal">in Green Hydrogen</span>
+            </h1>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto mb-10 animate-fade-in-up" style="animation-delay: 0.2s;">
+                Discover mentorships, scholarships, jobs, internships, training programs, and grants across Africa's growing hydrogen economy.
+            </p>
+            
+            <!-- Search Bar -->
+            <div class="max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.3s;">
+                <div class="relative">
+                    <i data-lucide="search" class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400"></i>
+                    <input type="text" id="searchInput" placeholder="Search opportunities by title, organization, or keyword..." 
+                           class="w-full pl-12 pr-4 py-4 rounded-full border border-gray-200 shadow-lg focus:outline-none focus:ring-2 focus:ring-yigh-green focus:border-transparent">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <div class="sticky top-16 md:top-20 z-40 bg-white border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex overflow-x-auto no-scrollbar gap-2 py-4">
+                <button class="filter-btn active px-5 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap" data-category="all">All Opportunities</button>
+                <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap hover:bg-gray-100" data-category="mentorship">Mentorships</button>
+                <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap hover:bg-gray-100" data-category="scholarship">Scholarships & Grants</button>
+                <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap hover:bg-gray-100" data-category="job">Jobs & Internships</button>
+                <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap hover:bg-gray-100" data-category="training">Training & Certification</button>
+                <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap hover:bg-gray-100" data-category="fellowship">Fellowships</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Opportunities Grid -->
+    <section class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Results Count -->
+            <div class="flex justify-between items-center mb-6 flex-wrap gap-4">
+                <p class="text-slate-600"><span id="resultsCount">0</span> opportunities found</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-sm text-slate-500">Sort by:</span>
+                    <select id="sortSelect" class="text-sm border border-gray-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-yigh-green">
+                        <option value="latest">Latest First</option>
+                        <option value="deadline">Deadline (Soonest)</option>
+                        <option value="title">Title A-Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Opportunities Grid -->
+            <div id="opportunitiesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards will be populated by JavaScript -->
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResults" class="text-center py-16 hidden">
+                <i data-lucide="inbox" class="w-16 h-16 text-slate-300 mx-auto mb-4"></i>
+                <h3 class="text-xl font-semibold text-slate-700 mb-2">No opportunities found</h3>
+                <p class="text-slate-500">Try adjusting your search or filter to find what you're looking for.</p>
+                <button onclick="resetFilters()" class="mt-4 text-yigh-green font-medium hover:underline">Clear all filters →</button>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button id="loadMoreBtn" class="bg-white border-2 border-yigh-green text-yigh-green px-8 py-3 rounded-full font-semibold hover:bg-yigh-green hover:text-white transition-all">Load More Opportunities</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Alerts Section -->
+    <section class="py-16 bg-gradient-to-r from-yigh-green to-yigh-teal">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <i data-lucide="bell" class="w-12 h-12 mx-auto mb-4"></i>
+            <h2 class="text-3xl md:text-4xl font-bold mb-3">Don't Miss an Opportunity</h2>
+            <p class="text-white/90 mb-6 text-lg">Get weekly updates on new jobs, scholarships, and programs in green hydrogen delivered to your inbox.</p>
+            <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Thank you! You\'ll receive weekly opportunity alerts.');">
+                <input type="email" placeholder="Your email address" required class="flex-1 px-4 py-3 rounded-full text-slate-800 focus:outline-none focus:ring-2 focus:ring-white">
+                <button type="submit" class="bg-white text-yigh-green px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all">Subscribe to Alerts</button>
+            </form>
+            <p class="text-xs text-white/70 mt-4">No spam. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-yigh-green rounded-full flex items-center justify-center">
+                            <i data-lucide="zap" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">YIGH</span>
+                    </div>
+                    <p class="text-slate-400 mb-6 max-w-sm">Youth Initiative for Green Hydrogen — empowering Africa's next-gen climate leaders through opportunities, training, and community.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-yigh-green transition-all"><i data-lucide="linkedin" class="w-5 h-5 text-white"></i></a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-yigh-green transition-all"><i data-lucide="twitter" class="w-5 h-5 text-white"></i></a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-yigh-green transition-all"><i data-lucide="instagram" class="w-5 h-5 text-white"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#about" class="hover:text-yigh-green transition-colors">About</a></li>
+                        <li><a href="index.html#vision" class="hover:text-yigh-green transition-colors">Vision</a></li>
+                        <li><a href="opportunities.html" class="hover:text-yigh-green transition-colors">Opportunities</a></li>
+                        <li><a href="index.html#events" class="hover:text-yigh-green transition-colors">Events</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i><a href="mailto:hello@yigh.africa" class="hover:text-yigh-green transition-colors">hello@yigh.africa</a></li>
+                        <li class="flex items-start gap-2"><i data-lucide="map-pin" class="w-4 h-4 mt-1"></i><span>Nairobi, Kenya / Pan-African Digital Hub</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-center">
+                <p class="text-sm">© 2025 YIGH – Youth Initiative for Green Hydrogen. Empowering Africa's green hydrogen future.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-yigh-green text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-yigh-dark hover:scale-110 z-50">
+        <i data-lucide="chevron-up" class="w-6 h-6"></i>
+    </button>
+
+    <script>
+        // Opportunities Data
+        const opportunities = [
+            { id: 1, title: "Green Hydrogen Mentorship Program", organization: "YIGH x IRENA", category: "mentorship", type: "Mentorship", deadline: "Dec 15, 2025", location: "Remote (Africa)", description: "Get paired with industry experts and hydrogen researchers for 6 months of career guidance.", applyLink: "#", featured: true, dateAdded: "2025-11-01" },
+            { id: 2, title: "Mastercard Foundation Scholarship - Hydrogen Energy", organization: "Mastercard Foundation", category: "scholarship", type: "Scholarship", deadline: "Jan 30, 2026", location: "Kenya / Online", description: "Full scholarships for African students in renewable energy and hydrogen technology programs.", applyLink: "#", featured: true, dateAdded: "2025-11-05" },
+            { id: 3, title: "Hydrogen Research Intern", organization: "KenGen", category: "job", type: "Internship", deadline: "Nov 30, 2025", location: "Nairobi, Kenya", description: "6-month paid internship in green hydrogen R&D at Kenya's leading energy utility.", applyLink: "#", featured: false, dateAdded: "2025-11-10" },
+            { id: 4, title: "Clean Energy Policy Fellowship", organization: "African Youth Climate Hub", category: "fellowship", type: "Fellowship", deadline: "Feb 15, 2026", location: "Addis Ababa / Remote", description: "12-month fellowship training young Africans to influence energy policy at continental level.", applyLink: "#", featured: true, dateAdded: "2025-11-08" },
+            { id: 5, title: "Electrolysis Technician Certification", organization: "Green Hydrogen Academy", category: "training", type: "Training", deadline: "Rolling", location: "Online", description: "Self-paced certification course on PEM and alkaline electrolysis systems.", applyLink: "#", featured: false, dateAdded: "2025-10-15" },
+            { id: 6, title: "SAF Production Engineer", organization: "TotalEnergies", category: "job", type: "Full-time", deadline: "Dec 10, 2025", location: "Cape Town, South Africa", description: "Lead sustainable aviation fuel production engineering at new facility.", applyLink: "#", featured: true, dateAdded: "2025-11-12" },
+            { id: 7, title: "AfricaGoGreen Startup Grant", organization: "AfricaGoGreen", category: "scholarship", type: "Grant", deadline: "Jan 10, 2026", location: "Pan-Africa", description: "Up to $50,000 in seed funding for youth-led green hydrogen startups.", applyLink: "#", featured: false, dateAdded: "2025-11-03" },
+            { id: 8, title: "Hydrogen Safety Training Program", organization: "GIZ H2-Diplo", category: "training", type: "Training", deadline: "Dec 20, 2025", location: "Online + Nairobi", description: "Certified training on hydrogen safety standards and handling procedures.", applyLink: "#", featured: false, dateAdded: "2025-10-28" },
+            { id: 9, title: "Young Energy Professional Mentorship", organization: "African Energy Chamber", category: "mentorship", type: "Mentorship", deadline: "Jan 5, 2026", location: "Remote", description: "Connect with senior energy executives across Africa's energy sector.", applyLink: "#", featured: false, dateAdded: "2025-11-07" },
+            { id: 10, title: "Green Hydrogen PhD Scholarship", organization: "DAAD", category: "scholarship", type: "Scholarship", deadline: "Mar 1, 2026", location: "Germany / Remote", description: "Fully-funded PhD positions in green hydrogen research for African students.", applyLink: "#", featured: false, dateAdded: "2025-11-14" },
+            { id: 11, title: "Hydrogen Economics Analyst", organization: "PwC Africa", category: "job", type: "Full-time", deadline: "Dec 5, 2025", location: "Johannesburg, SA", description: "Join the energy advisory team focusing on hydrogen market analysis.", applyLink: "#", featured: false, dateAdded: "2025-11-09" },
+            { id: 12, title: "Youth in Hydrogen Fellowship", organization: "UNIDO", category: "fellowship", type: "Fellowship", deadline: "Jan 20, 2026", location: "Vienna / Remote", description: "6-month fellowship at UNIDO headquarters working on hydrogen policy.", applyLink: "#", featured: false, dateAdded: "2025-11-11" },
+            { id: 13, title: "Fuel Cell Technology Workshop", organization: "Hydrogen Council Africa", category: "training", type: "Training", deadline: "Dec 8, 2025", location: "Cape Town", description: "Hands-on workshop on fuel cell assembly and testing.", applyLink: "#", featured: false, dateAdded: "2025-10-20" },
+            { 
+                id: 14, 
+                title: "WiGH x Global African Hydrogen Summit", 
+                organization: "Women in Clean Energy", 
+                category: "mentorship", 
+                type: "Mentorship", 
+                deadline: "September 9-11, 2026", 
+                location: "Windhoek, Namibia", 
+                description: "Dedicated mentorship program for young women in hydrogen sector. Connect with industry leaders at the Global African Hydrogen Summit.", 
+                applyLink: "https://women-in-green-hydrogen.net/news/wigh-x-global-african-hydrogen-summit/", 
+                external: true, 
+                featured: true, 
+                dateAdded: "2025-11-13" 
+            },
+            { id: 15, title: "Green Hydrogen Innovation Challenge", organization: "AfriH2", category: "scholarship", type: "Competition", deadline: "Feb 1, 2026", location: "Pan-Africa", description: "$10,000 prize for innovative green hydrogen solutions from youth.", applyLink: "#", external: true,  featured: false, dateAdded: "2025-11-06" }
+        ];
+
+        let currentFilter = "all";
+        let currentSearch = "";
+        let currentSort = "latest";
+        let visibleCount = 9;
+
+        function getCategoryLabel(category) {
+            const labels = { mentorship: "Mentorship", scholarship: "Scholarship/Grant", job: "Job/Internship", training: "Training", fellowship: "Fellowship" };
+            return labels[category] || category;
+        }
+
+        function getDeadlineClass(deadline) {
+            if (deadline === "Rolling") return "text-green-600 bg-green-50";
+            // Simple check - in real implementation would compare dates
+            return "text-amber-600 bg-amber-50";
+        }
+
+        function filterAndSortOpportunities() {
+            let filtered = opportunities.filter(opp => {
+                const matchesCategory = currentFilter === "all" || opp.category === currentFilter;
+                const matchesSearch = currentSearch === "" || opp.title.toLowerCase().includes(currentSearch.toLowerCase()) || opp.organization.toLowerCase().includes(currentSearch.toLowerCase()) || opp.description.toLowerCase().includes(currentSearch.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            if (currentSort === "latest") filtered.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+            else if (currentSort === "deadline") filtered.sort((a, b) => (a.deadline === "Rolling" ? 999 : 0) - (b.deadline === "Rolling" ? 999 : 0));
+            else if (currentSort === "title") filtered.sort((a, b) => a.title.localeCompare(b.title));
+
+            return filtered;
+        }
+
+        function renderOpportunities() {
+            const filtered = filterAndSortOpportunities();
+            const visible = filtered.slice(0, visibleCount);
+            const grid = document.getElementById("opportunitiesGrid");
+            const noResults = document.getElementById("noResults");
+            const resultsCount = document.getElementById("resultsCount");
+
+            resultsCount.textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = "";
+                noResults.classList.remove("hidden");
+                document.getElementById("loadMoreBtn").classList.add("hidden");
+                return;
+            }
+
+            noResults.classList.add("hidden");
+            document.getElementById("loadMoreBtn").classList.toggle("hidden", visible.length >= filtered.length);
+
+            grid.innerHTML = visible.map(opp => `
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100 hover:shadow-xl transition-all reveal-on-scroll">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-xs font-semibold px-2 py-1 rounded-full ${opp.deadline === "Rolling" ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}">
+                            ${opp.deadline === "Rolling" ? 'Rolling Deadline' : `Deadline: ${opp.deadline}`}
+                        </span>
+                        <span class="text-xs font-medium text-yigh-green bg-yigh-light px-2 py-1 rounded-full">${getCategoryLabel(opp.category)}</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-1">${opp.title}</h3>
+                    <p class="text-sm text-yigh-green mb-2">${opp.organization}</p>
+                    <p class="text-slate-600 text-sm mb-3">${opp.description.substring(0, 100)}${opp.description.length > 100 ? '...' : ''}</p>
+                    <div class="flex items-center gap-3 text-xs text-slate-500 mb-4">
+                        <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> ${opp.location}</span>
+                        <span class="flex items-center gap-1"><i data-lucide="briefcase" class="w-3 h-3"></i> ${opp.type}</span>
+                    </div>
+                    <a href="${opp.applyLink}" 
+                        ${opp.external ? 'target="_blank" rel="noopener noreferrer"' : ''} 
+                        class="inline-flex items-center gap-2 text-yigh-green font-semibold text-sm hover:gap-3 transition-all">
+                            View Details 
+                            ${opp.external ? '<i data-lucide="external-link" class="w-3 h-3"></i>' : '<i data-lucide="arrow-right" class="w-4 h-4"></i>'}
+                        </a>
+                </div>
+            `).join("");
+            
+            lucide.createIcons();
+            document.querySelectorAll('#opportunitiesGrid .reveal-on-scroll').forEach(el => el.classList.add('revealed'));
+        }
+
+        function resetFilters() {
+            currentFilter = "all";
+            currentSearch = "";
+            currentSort = "latest";
+            visibleCount = 9;
+            document.getElementById("searchInput").value = "";
+            document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+            document.querySelector('.filter-btn[data-category="all"]').classList.add("active");
+            document.getElementById("sortSelect").value = "latest";
+            renderOpportunities();
+        }
+
+        // Event Listeners
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentFilter = btn.dataset.category;
+                visibleCount = 9;
+                renderOpportunities();
+            });
+        });
+
+        document.getElementById("searchInput").addEventListener("input", (e) => {
+            currentSearch = e.target.value;
+            visibleCount = 9;
+            renderOpportunities();
+        });
+
+        document.getElementById("sortSelect").addEventListener("change", (e) => {
+            currentSort = e.target.value;
+            renderOpportunities();
+        });
+
+        document.getElementById("loadMoreBtn").addEventListener("click", () => {
+            visibleCount += 6;
+            renderOpportunities();
+        });
+
+        // Initial render
+        renderOpportunities();
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) navbar.classList.add('shadow-md');
+            else navbar.classList.remove('shadow-md');
+        });
+
+        // Back to top
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            document.querySelectorAll('#mobile-menu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+        }
+
+        lucide.createIcons();
+    </script>
+</body>
+</html>
