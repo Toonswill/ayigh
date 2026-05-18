@@ -1,0 +1,16 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+
+# Temporary files
+*.tmp
+*.log
+
+# Sensitive files (if any)
+.env
+config.js
