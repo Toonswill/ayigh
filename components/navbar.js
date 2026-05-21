@@ -7,7 +7,7 @@ document.getElementById("navbar-container").innerHTML = `
           Y
         </div>
         <span class="font-display font-bold text-lg sm:text-xl tracking-tight text-gray-900">
-          YIGH
+          AYIGH
         </span>
       </a>
 
@@ -16,10 +16,10 @@ document.getElementById("navbar-container").innerHTML = `
         <a href="#focus" class="text-sm text-gray-700 hover:text-green-600 transition-colors">Focus Areas</a>
         <a href="#events" class="text-sm text-gray-700 hover:text-green-600 transition-colors">Events</a>
         <a href="#team" class="text-sm text-gray-700 hover:text-green-600 transition-colors">Team</a>
-        <a href="https://youth-green-hub.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-700 hover:text-green-600 transition-colors">Policy Hub</a>
+        <a href="#join" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-700 hover:text-green-600 transition-colors">Policy Hub</a>
         <a href="#join" class="text-sm text-gray-700 hover:text-green-600 transition-colors">Contact</a>
         <a href="#join" class="px-5 py-2.5 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm rounded-full transition-all">
-          Join YIGH
+          Join AYIGH
         </a>
       </div>
 
@@ -38,7 +38,7 @@ document.getElementById("navbar-container").innerHTML = `
   <a href="#focus" class="mobile-link">Focus Areas</a>
   <a href="#events" class="mobile-link">Events</a>
   <a href="#team" class="mobile-link">Team</a>
-  <a href="https://youth-green-hub.vercel.app/" target="_blank" class="mobile-link">Policy Hub</a>
+  <a href="#join" target="_blank" class="mobile-link">Policy Hub</a>
   <a href="#join" class="mobile-link">Contact</a>
   <a href="#join" class="mt-4 px-8 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold text-center rounded-full transition-all">Join YIGH</a>
 </div>
